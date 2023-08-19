@@ -1,4 +1,6 @@
 <script>
+  // @ts-nocheck
+
   import ActionButton from "../components/ActionButton.svelte";
   import Agenda from "../components/Agenda.svelte";
   import MeetingLink from "../components/MeetingLink.svelte";
@@ -31,7 +33,13 @@
       },
       {
         type: "REFERENCE",
-        links: [{ link: "http:...", keyword: "Kubernetes" }],
+        links: [
+          {
+            title: "Kubernetes | How to do dab",
+            link: "https://kubernetes.io/",
+            keyword: "Kubernetes",
+          },
+        ],
       },
     ],
   };

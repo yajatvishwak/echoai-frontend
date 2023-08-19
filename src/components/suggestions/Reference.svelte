@@ -1,8 +1,13 @@
 <script>
   import toast from "svelte-french-toast";
+  import { onMount } from "svelte";
+  import { LinkPreview } from "svelte-link-preview";
 
   let isModalOpen = false;
-  export let data = [{ topic: "" }];
+  export let data = { links: [] };
+  onMount(() => {
+    toast.success("Reference generated");
+  });
 </script>
 
 <input type="checkbox" bind:checked={isModalOpen} class="modal-toggle" />
@@ -15,6 +20,23 @@
     <h3 class="font-semibold text-lg">Reference</h3>
     <div class="py-4 flex flex-col gap-3">
       <div>Find the topics and generated help links from the meeting</div>
+      <div class="grid grid-cols-2 gap-2">
+        {#each data.links as link}
+          <a
+            href={link.link}
+            class="hover:scale-95 transition-all p-2 flex-col flex gap-2 border rounded"
+          >
+            <div data-tip={link.link} class="tooltip text-start">
+              <div class="line-clamp-1">{link.link}</div>
+            </div>
+            <div class="mt-2 text-sm">
+              Picked up keyword from meeting: <div class="badge">
+                {link.keyword}
+              </div>
+            </div>
+          </a>
+        {/each}
+      </div>
     </div>
   </div>
 </div>

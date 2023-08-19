@@ -20,8 +20,10 @@
   },
   "dependencies": {
     "daisyui": "^3.5.1",
+    "link-preview-js": "^3.0.5",
     "moment": "^2.29.4",
     "svelte-french-toast": "^1.2.0",
+    "svelte-link-preview": "^0.3.3",
     "svelte-spa-router": "^3.3.0"
   }
 }
