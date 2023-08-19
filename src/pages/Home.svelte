@@ -13,7 +13,7 @@
       Actionable meetings, always
     </div>
     <div class="text-center text-xl font-normal">
-      echoai generates actions from your online meeting
+      echoai generates actions from your online meetings
     </div>
     <div class="flex flex-col mt-10 max-w-xl w-full">
       <div class="join gap-2">
