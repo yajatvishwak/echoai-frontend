@@ -3,4 +3,6 @@
   import routes from "./routes";
 </script>
 
-<Router {routes} />
+<div class="h-screen flex flex-col">
+  <Router {routes} />
+</div>
