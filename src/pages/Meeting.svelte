@@ -14,21 +14,24 @@
       {
         type: "EMAIL",
         text: "We've noticed you mentioned to email XYZ person about ABC",
-        emailContent: "...",
-        emailID: "",
+        sender: ["bro"],
+        emailContent:
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque error voluptatibus, aliquid illum ipsa asperiores? Corporis, praesentium? Nam laborum ullam accusantium molestiae optio reiciendis aliquam, eum facilis ad, voluptatum consectetur.",
+        emailDescription: "Send email to the team",
         actionCompleted: false,
       },
       {
         type: "MEETING",
         text: "text from gpt",
-        meetingTitle: "",
         actionCompleted: false,
+        meetingTime: "",
+        meetingDate: "",
+        meetingAgenda: "Meeting with the team",
+        invitation: ["dannyboi@gmail.com", "dannyboi@gmail.com"],
       },
       {
         type: "REFERENCE",
-        text: "We heard that you were talking about implementing kubernetes",
-        keyword: "Kubernetes",
-        links: ["how to get started", "what is kubernetes"],
+        links: [{ link: "http:...", keyword: "Kubernetes" }],
       },
     ],
   };
@@ -83,9 +86,17 @@
         SUGGESTIONS
       </div>
       <div class="grid grid-cols-2 gap-5">
-        <ScheduleMeeting />
-        <SendEmail />
-        <Reference />
+        {#each data.suggestions as suggestion}
+          {#if suggestion.type === "EMAIL"}
+            <SendEmail data={suggestion} />
+          {/if}
+          {#if suggestion.type === "REFERENCE"}
+            <Reference data={suggestion} />
+          {/if}
+          {#if suggestion.type === "MEETING"}
+            <ScheduleMeeting data={suggestion} />
+          {/if}
+        {/each}
       </div>
     </div>
   </div>

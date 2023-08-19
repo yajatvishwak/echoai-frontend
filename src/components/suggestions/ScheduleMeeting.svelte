@@ -2,7 +2,7 @@
   import toast from "svelte-french-toast";
   import moment from "moment";
 
-  let data = {
+  export let data = {
     meetingTime: "",
     meetingDate: "",
     meetingAgenda: "Meeting with the team",
@@ -10,6 +10,7 @@
   };
   let isModalOpen = false;
   let isScheduled = false;
+  console.log(data);
 </script>
 
 <input type="checkbox" bind:checked={isModalOpen} class="modal-toggle" />
@@ -111,7 +112,7 @@
       </svg>
       <div class="font-semibold">Schedule Meeting</div>
     </div>
-    <div class="font-semibold mt-3">
+    <div class="font-medium mt-3">
       {data.meetingAgenda}
     </div>
     <div class="text-sm">
