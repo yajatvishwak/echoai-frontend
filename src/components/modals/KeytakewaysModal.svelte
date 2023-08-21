@@ -1,19 +1,6 @@
 <script>
   import { store } from "../../store";
-  export let data = {
-    keytakeaways: [
-      {
-        title: "Key Takeaway Title",
-        explanation:
-          "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam odio vero eaque fugiat, excepturi ad similique soluta fugit? Eum ad assumenda nesciunt consectetur omnis ex. Recusandae deleniti unde error facilis.",
-      },
-      {
-        title: "Key Takeaway Title",
-        explanation:
-          "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam odio vero eaque fugiat, excepturi ad similique soluta fugit? Eum ad assumenda nesciunt consectetur omnis ex. Recusandae deleniti unde error facilis.",
-      },
-    ],
-  };
+  export let data = [];
 </script>
 
 <input
@@ -29,12 +16,12 @@
     >
     <h3 class="font-semibold text-lg">Meeting Key Takeaways</h3>
     <div class="py-4 flex flex-col gap-3">
-      {#each data.keytakeaways as { title, explanation }, index}
+      {#each data as explanation, index}
         <div class="flex flex-col gap-2">
-          <div class="font-semibold text-purple-500">
+          <!-- <div class="font-semibold text-purple-500">
             {index + 1 + ". " + title}
-          </div>
-          <div class="">{explanation}</div>
+          </div> -->
+          <div class="">{index + 1 + ". " + explanation}</div>
         </div>
       {/each}
     </div>

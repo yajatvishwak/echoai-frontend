@@ -1,14 +1,6 @@
 <script>
   import { store } from "../../store";
-  export let data = {
-    todo: [
-      {
-        title: "Todo Title",
-        content: "Summary of what must be done",
-        completed: false,
-      },
-    ],
-  };
+  export let data = [];
 </script>
 
 <input type="checkbox" bind:checked={$store.todoModal} class="modal-toggle" />
@@ -18,9 +10,9 @@
       on:click={() => ($store.todoModal = false)}
       class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button
     >
-    <h3 class="font-semibold text-lg">Todo list</h3>
+    <h3 class="font-semibold text-lg">Action Items</h3>
     <div class="py-4 flex flex-col gap-3">
-      {#each data.todo as { title }}
+      {#each data as title}
         <div class="flex items-center gap-2">
           <input type="checkbox" class="checkbox h-5 w-5 text-gray-600" />
           <span class="">{title} </span>

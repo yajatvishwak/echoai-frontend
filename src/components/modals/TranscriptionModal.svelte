@@ -1,9 +1,6 @@
 <script>
   import { store } from "../../store";
-  export let data = {
-    transcript:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam odio vero eaque fugiat, excepturi ad similique soluta fugit? Eum ad assumenda nesciunt consectetur omnis ex. Recusandae deleniti unde error facilis.",
-  };
+  export let data = "";
 </script>
 
 <input
@@ -19,7 +16,7 @@
     >
     <h3 class="font-semibold text-lg">Meeting Transcript</h3>
     <div class="py-4 flex flex-col gap-3">
-      {data.transcript}
+      {data}
     </div>
   </div>
 </div>

@@ -9,11 +9,6 @@
   import toast, { Toaster } from "svelte-french-toast";
 </script>
 
-<AbsentiaModal />
-<Todolist />
-<TranscriptionModal />
-<KeytakewaysModal />
-
 <Toaster />
 <div class="h-screen flex flex-col">
   <Router {routes} />

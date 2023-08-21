@@ -42,5 +42,5 @@
     </div>
   {/if}
   <div>•</div>
-  <div>{duration}</div>
+  <div>{duration}s</div>
 </div>

@@ -1,18 +1,13 @@
 <script>
   import toast from "svelte-french-toast";
-  import { onMount } from "svelte";
-  import { LinkPreview } from "svelte-link-preview";
 
   let isModalOpen = false;
   export let data = { links: [] };
-  onMount(() => {
-    toast.success("Reference generated");
-  });
 </script>
 
 <input type="checkbox" bind:checked={isModalOpen} class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box max-w-xl">
+  <div class="modal-box max-w-screen-lg">
     <button
       on:click={() => (isModalOpen = false)}
       class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button
@@ -27,12 +22,11 @@
             class="hover:scale-95 transition-all p-2 flex-col flex gap-2 border rounded"
           >
             <div data-tip={link.link} class="tooltip text-start">
-              <div class="line-clamp-1">{link.link}</div>
+              <div class="line-clamp-2 font-semibold">{link.title}</div>
             </div>
             <div class="mt-2 text-sm">
-              Picked up keyword from meeting: <div class="badge">
-                {link.keyword}
-              </div>
+              Picked up keyword from meeting:
+              <span class="font-bold">{link.keyword}</span>
             </div>
           </a>
         {/each}

@@ -2,12 +2,7 @@
   import toast from "svelte-french-toast";
 
   let isModalOpen = false;
-  let data = {
-    sender: ["bro"],
-    emailContent:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque error voluptatibus, aliquid illum ipsa asperiores? Corporis, praesentium? Nam laborum ullam accusantium molestiae optio reiciendis aliquam, eum facilis ad, voluptatum consectetur.",
-    emailDescription: "Send email to the team",
-  };
+  export let data = {};
 </script>
 
 <input type="checkbox" bind:checked={isModalOpen} class="modal-toggle" />
@@ -19,24 +14,39 @@
     >
     <h3 class="font-semibold text-lg">Compose Email</h3>
     <div class="py-4 flex flex-col gap-3">
+      <div
+        class="label label-text-alt text-purple-500 uppercase text-xs font-semibold py-1"
+      >
+        Recipient
+      </div>
+
       <input
         type="email"
         class="input input-bordered"
         placeholder="Email"
         name=""
         id=""
+        bind:value={data.receiver}
       />
-      {#each data.sender as invite}
-        <button
-          on:click={() => {
-            data.sender = data.sender.filter((i) => i !== invite);
-            toast.success("Removed " + invite);
-          }}
-          class="badge"
-        >
-          {invite}
-        </button>
-      {/each}
+      <div
+        class="label label-text-alt text-purple-500 uppercase text-xs font-semibold py-1"
+      >
+        Subject
+      </div>
+      <input
+        type="text"
+        class="input input-bordered"
+        placeholder="Email Subject"
+        name=""
+        id=""
+        bind:value={data.emailSubject}
+      />
+      <div
+        class="label label-text-alt text-purple-500 uppercase text-xs font-semibold py-1"
+      >
+        Email Body
+      </div>
+
       <textarea
         rows="4"
         class="textarea textarea-bordered"
@@ -46,14 +56,22 @@
       <button
         class="btn"
         on:click={() => {
+          let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+
           if (data.emailContent === "") {
             toast.error("Email content cannot be empty");
             return;
           }
-          if (data.sender.length === 0) {
-            toast.error("Please add a recipient");
+          if (data.emailSubject === "") {
+            toast.error("Email subject cannot be empty");
             return;
           }
+          console.log(regex.test(data.receiver));
+          if (!regex.test(data.receiver)) {
+            toast.error("Email receiver must be a valid email address");
+            return;
+          }
+
           toast.success("Email sent");
           isModalOpen = false;
         }}>Send Email</button
@@ -84,8 +102,8 @@
         />
       </svg>
 
-      <div class="font-semibold">Send email</div>
+      <div class="font-semibold">Send Follow up email</div>
     </div>
-    <div class="mt-3">{data.emailDescription}</div>
+    <div class="mt-3">{data.emailCTA}</div>
   </div>
 </div>
